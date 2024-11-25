@@ -5,7 +5,7 @@ import { aiInfer, helloWorld } from "~/inngest/functions";
 
 const handler = serve({
   client: inngest,
-  functions: [aiInfer, helloWorld],
+  functions: [helloWorld, aiInfer],
 });
 
 export { handler as action, handler as loader };

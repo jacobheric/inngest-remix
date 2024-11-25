@@ -1,5 +1,5 @@
+import { inngest, InngestIgnoreError } from "./client";
 import { openai } from "inngest";
-import { inngest } from "./client";
 
 export const helloWorld = inngest.createFunction(
   { id: "hello-world" },
@@ -97,8 +97,9 @@ export const aiInfer = inngest.createFunction(
   { event: "ai/infer.test" },
   async ({ event, step }) => {
     console.log("running ai infer");
+
     const response = await step.ai.infer("inference", {
-      provider: openai({
+      model: openai({
         apiKey: process.env.OPENAI_API_KEY,
         model: "chatgpt-4o-latest",
       }),
